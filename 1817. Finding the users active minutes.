@@ -1,0 +1,13 @@
+class Solution {
+public:
+    vector<int> findingUsersActiveMinutes(vector<vector<int>>& logs, int k) {
+        map<int,set<int>> m;
+        for(int i=0;i<logs.size();i++)
+        m[logs[i][0]].insert(logs[i][1]);
+        vector<int> v(k,0);
+        map<int,set<int>>::iterator ir=m.begin();
+        for(;ir!=m.end();ir++)
+        v[(ir->second).size()-1]++;
+        return v;
+    }
+};
