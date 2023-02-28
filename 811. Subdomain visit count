@@ -1,0 +1,44 @@
+class Solution {
+public:
+    void solve(string s,map<string,int> &m)
+    {
+        string str1="",str2="",str3="",str4="";
+        int i=0;
+        while(i<s.size() && s[i]>='0' && s[i]<='9')
+        str1+=s[i++];
+        int x=stoi(str1);
+        int j=i+1,k=i+1;
+        while(j<s.size())
+        str2+=s[j++];
+        while(s[k]!='.')
+        k++;
+        int y=k+1;
+        k++;
+        while(k<s.size())
+        str3+=s[k++];
+        while(y<s.size() && s[y]!='.')
+        y++;
+        y++;
+        while(y<s.size())
+        str4+=s[y++];
+        if(!str2.empty())
+        m[str2]+=x;
+        if(!str3.empty())
+        m[str3]+=x;
+        if(!str4.empty())
+        m[str4]+=x;
+    }
+    vector<string> subdomainVisits(vector<string>& cpdomains) {
+        map<string,int> m;
+        for(int i=0;i<cpdomains.size();i++)
+        solve(cpdomains[i],m);
+        map<string,int>::iterator ir=m.begin();
+        vector<string> v;
+        for(;ir!=m.end();ir++)
+        {
+            string str=to_string(ir->second)+" "+ir->first;
+            v.push_back(str);
+        }
+        return v;
+    }
+};
