@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int splitNum(int num) {
+        string str=to_string(num);
+        sort(str.begin(),str.end());
+        string str1="",str2="";
+        for(int i=0;i<str.size();i++)
+        {
+            (i%2==0)?str1+=str[i]:str2+=str[i];
+        }
+        int x=stoi(str1);
+        int y=stoi(str2);
+        return x+y;
+    }
+};
