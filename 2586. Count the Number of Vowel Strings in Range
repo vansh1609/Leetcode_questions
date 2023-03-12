@@ -1,0 +1,19 @@
+class Solution {
+public:
+bool isvowel(char c)
+{
+    if(c=='a' || c=='e' || c=='i' || c=='o' || c=='u')
+    return true;
+    return false;
+}
+    int vowelStrings(vector<string>& words, int left, int right) {
+        int count=0;
+        for(int i=left;i<=right;i++)
+        {
+            string str=words[i];
+            if(isvowel(str[0]) && isvowel(str[str.size()-1]))
+            count++;
+        }
+        return count;
+    }
+};
