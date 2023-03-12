@@ -1,0 +1,30 @@
+class Solution {
+public:
+    void insert(ListNode **head,ListNode **rear,int x)
+    {
+        ListNode *t=new ListNode(x);
+        if(*head==NULL)
+            *head=*rear=t;
+        else
+        {
+            (*rear)->next=t;
+            (*rear)=(*rear)->next;
+        }
+    }
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        vector<int> v;
+        for(int i=0;i<lists.size();i++)
+        {
+            while(lists[i])
+            {
+                v.push_back(lists[i]->val);
+                lists[i]=lists[i]->next;
+            }
+        }
+        sort(v.begin(),v.end());
+        ListNode *head=NULL,*rear=NULL;
+        for(int i=0;i<v.size();i++)
+            insert(&head,&rear,v[i]);
+        return head;
+    }
+};
