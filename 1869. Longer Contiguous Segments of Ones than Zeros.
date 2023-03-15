@@ -1,0 +1,27 @@
+class Solution {
+public:
+    bool checkZeroOnes(string s) {
+        int o=0,z=0,count0=0,count1=0;
+        for(int i=0;i<s.size();i++)
+        {
+            if(s[i]=='1'){
+            count1++;
+            o=max(o,count1);
+            }
+            else
+            count1=0;
+        }
+        for(int i=0;i<s.size();i++)
+        {
+            if(s[i]=='0'){
+            count0++;
+            z=max(z,count0);
+            }
+            else
+            count0=0;
+        }
+        if(o>z)
+        return true;
+        return false;
+    }
+};
