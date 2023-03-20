@@ -1,0 +1,29 @@
+class Solution {
+public:
+    bool checkValidGrid(vector<vector<int>>& grid) {
+        int k=0,i=0,j=0,n=grid.size();
+        int r[]={-2,-1,1,2,2,1,-1,-2};
+        int c[]={1,2,2,1,-1,-2,-2,-1};
+        while(k<pow(n,2)-1)
+        {
+            bool b=false;
+            for(int x=0;x<8;x++)
+            {
+                int nr=i+r[x];
+                int nc=j+c[x];
+                if(nr>=0 && nc>=0 && nc<n && nr<n && grid[nr][nc]==k+1)
+                {
+                    b=true;
+                    i=nr;
+                    j=nc;
+                    break;
+                }    
+            }
+            if(b==false)
+            return false;
+            else
+            k++;
+        }
+        return true;
+    }
+};
