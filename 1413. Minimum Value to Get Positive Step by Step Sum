@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int minStartValue(vector<int>& nums) {
+        int x=1;
+        
+        int i=0,sum=x;
+        while(i<nums.size())
+        {
+            if(sum+nums[i]>=1){
+            
+            sum+=nums[i];
+            i++;
+            }
+            else
+            {
+                x++;
+                i=0;
+                sum=x;
+            }
+        }
+        return x;
+    }
+};
