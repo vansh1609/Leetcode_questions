@@ -1,0 +1,27 @@
+class SmallestInfiniteSet {
+public:
+    map<int,int> m;
+    SmallestInfiniteSet() {
+        for(int i=1;i<=1000;i++)
+            m[i]=1;
+    }
+    
+    int popSmallest() {
+        int index;
+        for(int i=1;i<=1000;i++)
+        {
+            if(m[i]==1)
+            {
+                index=i;
+                m[i]=0;
+                break;
+            }
+        }
+        return index;
+    }
+    
+    void addBack(int num) {
+        m[num]=1;
+    }
+};
+
