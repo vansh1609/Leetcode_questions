@@ -1,0 +1,36 @@
+class FrequencyTracker {
+public:
+    map<int,int> m1,m2;
+    FrequencyTracker() {
+        
+    }
+    
+    void add(int number) {
+        
+        m2[m1[number]]--;
+        m1[number]++;
+        m2[m1[number]]++;
+    }
+    
+    void deleteOne(int number) {
+        if(m1[number]){
+        m2[m1[number]]--;
+        m1[number]--;
+        m2[m1[number]]++;
+        }
+    }
+    
+    bool hasFrequency(int frequency) {
+        if(m2[frequency])
+        return true;
+        return false;
+    }
+};
+
+/**
+ * Your FrequencyTracker object will be instantiated and called as such:
+ * FrequencyTracker* obj = new FrequencyTracker();
+ * obj->add(number);
+ * obj->deleteOne(number);
+ * bool param_3 = obj->hasFrequency(frequency);
+ */
