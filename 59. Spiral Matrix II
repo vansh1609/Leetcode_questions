@@ -1,0 +1,41 @@
+class Solution {
+public:
+    vector<vector<int>> generateMatrix(int n) {
+        int r=n,c=n;
+        vector<vector<int>> v(n,vector<int>(n,0));
+        int count=0,total=n*n,x=1;
+        int srow=0,scol=0,erow=n-1,ecol=n-1;
+        while(count<total)
+        {
+            for(int i=scol;count<total && i<=ecol;i++)
+            {
+                v[srow][i]=x;
+                x++;
+                count++;
+            }
+            srow++;
+            for(int i=srow;count<total && i<=erow;i++)
+            {
+                v[i][ecol]=x;
+                x++;
+                count++;
+            }
+            ecol--;
+            for(int i=ecol;count<total && i>=scol;i--)
+            {
+                v[erow][i]=x;
+                x++;
+                count++;
+            }
+            erow--;
+            for(int i=erow;count<total && i>=srow;i--)
+            {
+                v[i][scol]=x;
+                x++;
+                count++;
+            }
+            scol++;
+        }
+        return v;
+    }
+};
