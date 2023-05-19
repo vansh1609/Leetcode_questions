@@ -1,0 +1,55 @@
+class Solution {
+public:
+    string reformatDate(string date) {
+        string year="",str="",month="",day="",m="";
+        int i=0,n=date.size()-1;
+        year+=date[n-3];
+        year+=date[n-2];
+        year+=date[n-1];
+        year+=date[n];
+        str+=year;
+        str+="-";
+        day+=date[0];
+        if(date[1]>='0' && date[1]<='9'){
+        day+=date[1];
+        i=5;
+        }
+        else{
+        day+="0";
+        i=4;
+        reverse(day.begin(),day.end());
+        }
+        
+        m+=date[i++];
+        m+=date[i++];
+        m+=date[i++];
+        if(m=="Jan")
+        month="01";
+        else if(m=="Feb")
+        month="02";
+        else if(m=="Mar")
+        month="03";
+        else if(m=="Apr")
+        month="04";
+        else if(m=="May")
+        month="05";
+        else if(m=="Jun")
+        month="06";
+        else if(m=="Jul")
+        month="07";
+        else if(m=="Aug")
+        month="08";
+        else if(m=="Sep")
+        month="09";
+        else if(m=="Oct")
+        month="10";
+        else if(m=="Nov")
+        month="11";
+        else 
+        month="12";
+        str+=month;
+        str+="-";
+        str+=day;
+        return str;
+    }
+};
