@@ -1,0 +1,38 @@
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        vector<int> v;
+        map<int,int> m;
+        for(int i=0;i<nums.size();i++)
+            m[nums[i]]++;
+        while(k>0)
+        {
+            int max=-32656;
+            map<int,int>::iterator ir=m.begin();
+            for(;ir!=m.end();ir++)
+            {
+                if(ir->second>max)
+                    max=ir->second;
+            }
+            // cout<<max;
+            map<int,int>::iterator ir1=m.begin();
+            for(;ir1!=m.end();ir1++)
+            {
+                if(ir1->second==max)
+                {
+                    v.push_back(ir1->first);
+                    m[ir1->first]=-1;
+                    break;
+                }
+            }
+            k--;
+        }
+      
+        
+      
+    
+        return v;
+        
+        
+    }
+};
