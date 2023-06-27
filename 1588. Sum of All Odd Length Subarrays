@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int sumOddLengthSubarrays(vector<int>& nums) {
+        int sum1=0,sum2=0,sum=0;
+        for(int i=0;i<nums.size();i++)
+        sum1+=nums[i];
+        for(int i=0;i<nums.size();i++)
+        {
+            int k=1;
+            for(int j=i+1;j<nums.size();j++)
+            {
+                k++;
+                if(k%2)
+                {
+                    for(int x=j;x>=i;x--)
+                    sum2+=nums[x];
+                }
+                
+            }
+        }
+        return sum1+sum2;
+            
+    }
+};
