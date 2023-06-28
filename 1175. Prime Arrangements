@@ -1,0 +1,34 @@
+class Solution {
+public:
+    bool isprime(int n)
+    {
+        if(n==1)
+        return false;
+        if(n==2)
+        return true;
+        for(int i=2;i<=sqrt(n);i++)
+        {
+            if(n%i==0)
+            return false;
+        }
+        return true;
+    }
+    long long int fact(int n)
+    {
+        long long int p=1;
+        for(int i=1;i<=n;i++)
+        p=(p*i)%1000000007;
+        return p;
+    }
+    int numPrimeArrangements(int n) {
+        int prime=0;
+        for(int i=1;i<=n;i++)
+        {
+            if(isprime(i))
+            prime++;
+        }
+        int nonprime=n-prime;
+        cout<<prime<<" "<<nonprime;
+        return ((fact(prime)%1000000007) * (fact(nonprime)%1000000007))%1000000007;
+    }
+};
