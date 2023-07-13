@@ -1,0 +1,63 @@
+class Solution {
+public:
+    bool dfs(int node,unordered_map<int,vector<int>> &m, vector<bool> &vis,vector<bool> &dfsvis)
+    {
+        // cout<<"jh";
+        // cout<<node;
+        vis[node]=true;
+        dfsvis[node]=true;
+        for(auto neighbour:m[node])
+        {
+            if(!vis[neighbour])
+            {
+                // cout<<"hi";
+                bool b=dfs(neighbour,m,vis,dfsvis);
+                if(b)
+                return true;
+            }
+            else if(dfsvis[neighbour])
+            {
+                return true;
+                // cout<<"hello";
+            }
+        }
+        dfsvis[node]=false;
+        return false;
+    }
+    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
+        
+        unordered_map<int,vector<int>> m;
+        vector<int> v;
+        int n=prerequisites.size();
+        if(n==1)
+        {
+            if(prerequisites[0][0]!=prerequisites[0][1])
+                return true;
+            return false;
+        }
+        for(int i=0;i<prerequisites.size();i++)
+            m[prerequisites[i][1]].push_back(prerequisites[i][0]);
+        for(int i=0;i<prerequisites.size();i++)
+        {
+            // for(int j=0;j<prerequisites[i].size();j++)
+                v.push_back(prerequisites[i][0]);
+            v.push_back(prerequisites[i][1]);
+        }
+        vector<bool> vis(n);
+        bool b;
+        vector<bool> dfsvis(n);
+        for(int i=0;i<v.size();i++)
+        {
+            
+            if(!vis[v[i]])
+            {
+           b =dfs(v[i],m,vis,dfsvis);
+            if(b)
+                return false;
+            }
+        }
+      
+        return true;
+        
+    }
+};
