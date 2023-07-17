@@ -1,0 +1,68 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    void insert(ListNode **head,ListNode **rear,int data)
+    {
+        ListNode *temp=new ListNode();
+        temp->val=data;
+        temp->next=NULL;
+        if(*head==NULL)
+            *head=*rear=temp;
+        else
+        {
+            (*rear)->next=temp;
+            *rear=temp;
+        }
+    }
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        vector<int> v1,v2,v3;
+        ListNode *p=l1,*q=l2;
+        while(p)
+        {
+            v1.push_back(p->val);
+            p=p->next;
+        }
+        while(q)
+        {
+            v2.push_back(q->val);
+                q=q->next;
+        }
+        reverse(v1.begin(),v1.end());
+        reverse(v2.begin(),v2.end());
+        int i=0,j=0,carry=0;
+        ListNode *head=NULL,*rear=NULL;
+        while(i<v1.size() && j<v2.size())
+        {
+            int sum=v1[i++]+v2[j++];
+            v3.push_back((sum+carry)%10);
+            carry=(sum+carry)/10;
+        }
+        while(i<v1.size())
+        {
+            int sum=v1[i++];
+            v3.push_back((sum+carry)%10);
+            carry=(sum+carry)/10;
+        }
+        while(j<v2.size())
+        {
+            int sum=v2[j++];
+            v3.push_back((sum+carry)%10);
+            carry=(sum+carry)/10;
+        }
+        if(carry!=0)
+            v3.push_back(carry);
+        reverse(v3.begin(),v3.end());
+        for(int k=0;k<v3.size();k++)
+            insert(&head,&rear,v3[k]);
+        return head;
+    }
+};
