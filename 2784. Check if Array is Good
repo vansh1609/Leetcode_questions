@@ -1,0 +1,23 @@
+class Solution {
+public:
+    bool isGood(vector<int>& nums) {
+        int maxi=1;
+        map<int,int> m;
+        for(int i=0;i<nums.size();i++)
+        {
+            maxi=max(maxi,nums[i]);
+            m[nums[i]]++;
+        }
+        if(m[maxi]!=2)
+        return false;
+        if(nums.size()!=maxi+1)
+        return false;
+        map<int,int>::iterator ir=m.begin();
+        for(;ir!=m.end();ir++)
+        {
+            if(ir->first!=maxi && ir->second>1)
+            return false;
+        }
+        return true;
+    }
+};
