@@ -1,0 +1,21 @@
+class Solution {
+public:
+    string sortVowels(string s) {
+        vector<char> v;
+        string str="";
+        for(int j=0;j<s.size();j++){
+            if(s[j]=='a' || s[j]=='e' || s[j]=='i' || s[j]=='o' || s[j]=='u' || s[j]=='A' || s[j]=='E' || s[j]=='I' || s[j]=='O' || s[j]=='U')
+        v.push_back(s[j]);
+        }
+        sort(v.begin(),v.end());
+        int i=0;
+        for(int j=0;j<s.size();j++)
+        {
+            if(s[j]=='a' || s[j]=='e' || s[j]=='i' || s[j]=='o' || s[j]=='u' || s[j]=='A' || s[j]=='E' || s[j]=='I' || s[j]=='O' || s[j]=='U')
+            str+=v[i++];
+            else
+            str+=s[j];
+        }
+        return str;
+    }
+};
