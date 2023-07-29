@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int hammingWeight(uint32_t n) {
+        string str=to_string(n);
+        int count=0;
+        long long x=stoll(str);
+        string s="";
+        while(x)
+        {
+            if(x%2==1)
+            count++;
+            x/=2;
+        }
+        return count;
+    }
+};
