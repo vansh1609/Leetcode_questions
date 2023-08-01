@@ -1,0 +1,29 @@
+class Solution {
+public:
+    void perm(int n,int ind,int k,vector<vector<int>> &vec,vector<int> &v,map<int,int> &m)
+    {
+        if(v.size()==k)
+        {
+            
+            vec.push_back(v);
+            return ;
+        }
+        for(int i=ind;i<=n;i++)
+        {
+          v.push_back(i);
+            perm(n,i+1,k,vec,v,m);
+            v.pop_back();
+        }
+    }
+    vector<vector<int>> combine(int n, int k) {
+        vector<int> v;
+        vector<vector<int>> vec;
+        map<int,int> m;
+        for(int i=1;i<=n;i++)
+            m[i]=0;
+        perm(n,1,k,vec,v,m);
+        
+        return vec;
+        
+    }
+};
