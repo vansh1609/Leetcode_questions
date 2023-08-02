@@ -1,0 +1,31 @@
+class Solution {
+public:
+    void perm(vector<vector<int>> &vec,vector<int> &nums,vector<int> &v,int index,map<int,int> &m)
+    {
+        if(v.size()==nums.size())
+        {
+            vec.push_back(v);
+            return;
+        }
+      for(int i=0;i<nums.size();i++)
+      {
+          if(m[nums[i]]==0)
+          {
+          v.push_back(nums[i]);
+            m[nums[i]]=1;
+          perm(vec,nums,v,i,m);
+          v.pop_back();
+          m[nums[i]]=0;
+          }
+      }
+    }
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int>> vec;
+        vector<int> v;
+        map<int,int> m;
+        perm(vec,nums,v,0,m);
+        // vector<vector<int>> vec;
+        // vec.push_back(v);
+        return vec;
+    }
+};
