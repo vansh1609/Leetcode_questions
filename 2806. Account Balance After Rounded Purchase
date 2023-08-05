@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int accountBalanceAfterPurchase(int purchaseAmount) {
+        vector<int> v{0,10,20,30,40,50,60,70,80,90,100};
+        int mini=INT_MAX,ele=0;
+        for(int i=0;i<v.size();i++)
+        {
+            if(abs(purchaseAmount-v[i])<=mini)
+            {
+                // cout<<abs(purchaseAmount-v[i]);
+                ele=v[i];
+                mini=min(mini,abs(purchaseAmount-v[i]));
+            }
+        }
+        return 100-ele;
+    }
+};
