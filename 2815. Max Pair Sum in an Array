@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int maxSum(vector<int>& nums) {
+        int maxi=-1;
+        for(int i=0;i<nums.size()-1;i++)
+        {
+            char maxd='0';
+            string str=to_string(nums[i]);
+            for(int j=0;j<str.size();j++)
+            {
+                if(str[j]>maxd)
+                maxd=str[j];
+            }
+            for(int j=i+1;j<nums.size();j++)
+            {
+                string s=to_string(nums[j]);
+                char maxdi='0';
+                for(int k=0;k<s.size();k++)
+                {
+                    if(s[k]>maxdi)
+                    maxdi=s[k];
+                }
+                if(maxd==maxdi)
+                maxi=max(maxi,nums[i]+nums[j]);
+            }
+        }
+        return maxi;
+    }
+};
