@@ -1,0 +1,39 @@
+class Solution {
+public:
+    vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
+        int n=mat.size();
+        int m=mat[0].size();
+        vector<vector<int>> v(n,vector<int>(m,-1));
+        queue<pair<int,pair<int,int>>> q;
+        for(int i=0;i<mat.size();i++)
+        {
+            for(int j=0;j<mat[i].size();j++)
+            {
+                if(mat[i][j]==0){
+                    v[i][j]=0;
+                q.push({0,{i,j}});
+                }
+            }
+        }
+        while(!q.empty())
+        {
+            int r=q.front().second.first;
+            int c=q.front().second.second;
+            int dist=q.front().first;
+            q.pop();
+            int x[]={-1,1,0,0};
+            int y[]={0,0,1,-1};
+            for(int i=0;i<4;i++)
+            {
+                int nr=r+x[i];
+                int nc=c+y[i];
+                if(nr>=0 && nr<n && nc>=0 && nc<m && v[nr][nc]==-1)
+                {
+                    v[nr][nc]=dist+1;
+                    q.push({dist+1,{nr,nc}});
+                }
+            }
+        }
+        return v;
+    }
+};
