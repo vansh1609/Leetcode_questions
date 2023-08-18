@@ -1,0 +1,50 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    void insert(ListNode** front,ListNode** rear,int x)
+    {
+        ListNode *temp=new ListNode();
+        temp->val=x;
+        temp->next=NULL;
+        if(*front==NULL)
+        *front=*rear=temp;
+        else
+        {
+            (*rear)->next=temp;
+            *rear=temp;
+        }
+
+    }
+    ListNode* doubleIt(ListNode* head) {
+        vector<int> v;
+        while(head)
+        {
+            v.push_back(head->val);
+            head=head->next;
+        }
+        reverse(v.begin(),v.end());
+        int carry=0;
+        for(int i=0;i<v.size();i++)
+        {
+            int x=v[i];
+            v[i]=(2*x+carry)%10;
+            carry=(2*x+carry)/10;
+        }
+        if(carry==1)
+        v.push_back(carry);
+        reverse(v.begin(),v.end());
+        ListNode *front=NULL,*rear=NULL;
+        for(int i=0;i<v.size();i++)
+        insert(&front,&rear,v[i]);
+        return front;
+    }
+};
