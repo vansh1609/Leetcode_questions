@@ -1,0 +1,13 @@
+class Solution {
+public:
+    string getPermutation(int n, int k) {
+        string str="";
+        string s="";
+        for(int i=1;i<=n;i++)
+        str+=to_string(i);
+        k--;
+        while(k--)
+        bool b=next_permutation(str.begin(),str.end());
+        return str;
+    }
+};
