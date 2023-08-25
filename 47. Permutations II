@@ -1,0 +1,17 @@
+class Solution {
+public:
+    vector<vector<int>> permuteUnique(vector<int>& nums) {
+        vector<vector<int>> ans;
+        vector<int> v(nums.begin(),nums.end());
+        set<vector<int>> s;
+        s.insert(nums);
+        next_permutation(nums.begin(),nums.end());
+        while(nums!=v){
+            s.insert(nums);
+        next_permutation(nums.begin(),nums.end());
+        }
+        for(auto it:s)
+        ans.push_back(it);
+        return ans;
+    }
+};
