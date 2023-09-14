@@ -1,0 +1,47 @@
+class Solution {
+public:
+    string convert(string s, int n) {
+        int m=s.size();
+        string str="";
+        if(n==1)
+            return s;
+        vector<vector<char>> v(n,vector<char>(m,'-'));
+        int i=0,j=0,k=0;
+        
+        while(i<m && j<n)
+            v[j++][k]=s[i++];
+        while(i<m)
+        {
+            if(j==n)
+            {
+                j=n-1;
+                while(j!=0 && i<m)
+                {
+                    v[j-1][k+1]=s[i++];
+                    j--;
+                    k++;
+                }
+            }
+            else
+            {
+                j++;
+                while(j!=n && i<m)
+                {
+                    v[j][k]=s[i++];
+                    j++;
+                }
+            }
+        }
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                if(v[i][j]!='-' )
+                    str+=v[i][j];
+                
+            }
+            
+        }
+        return str;
+    }
+};
