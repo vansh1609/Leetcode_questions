@@ -1,0 +1,14 @@
+class Solution {
+public:
+    bool isMonotonic(vector<int>& nums) {
+        vector<int> v1(nums.begin(),nums.end());
+        vector<int> v2(nums.begin(),nums.end());
+        sort(v1.begin(),v1.end());
+        sort(v2.begin(),v2.end(),greater<int>());
+        if(nums==v1 || nums==v2)
+            return true;
+        else
+            return false;
+        
+    }
+};
