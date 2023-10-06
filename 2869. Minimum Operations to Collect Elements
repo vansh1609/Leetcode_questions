@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int minOperations(vector<int>& nums, int k) {
+        int count=0;
+        set<int> s;
+        int i=nums.size()-1;
+        while(i>=0)
+        {
+            if(s.size()==k)
+            return count;
+            else
+            {
+                if(nums[i]<=k)
+                s.insert(nums[i]);
+                count++;
+                i--;
+            }
+        }
+        return count;
+    }
+};
