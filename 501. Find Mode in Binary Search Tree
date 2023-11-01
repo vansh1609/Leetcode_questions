@@ -1,0 +1,44 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    vector<int> v;
+    void inorder(TreeNode *root)
+    {
+        if(root)
+        {
+            inorder(root->left);
+            v.push_back(root->val);
+            inorder(root->right);
+        }
+    }
+    vector<int> findMode(TreeNode* root) {
+        inorder(root);
+        vector<int> result;
+        map<int,int> m;
+        for(int i=0;i<v.size();i++)
+            m[v[i]]++;
+        map<int,int>::iterator ir1=m.begin(),ir2=m.begin();
+        int max=0;
+        for(;ir1!=m.end();ir1++)
+        {
+            if(ir1->second>max)
+                max=ir1->second;
+        }
+        for(;ir2!=m.end();ir2++)
+        {
+            if(ir2->second==max)
+                result.push_back(ir2->first);
+        }
+        return result;
+    }
+};
