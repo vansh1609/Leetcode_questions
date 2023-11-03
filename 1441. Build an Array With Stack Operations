@@ -1,0 +1,27 @@
+class Solution {
+public:
+    vector<string> buildArray(vector<int>& target, int n) {
+        vector<int> v(n+1,0);
+        vector<string> ans;
+        int i=0,j=0,k=1;
+        while(j<target.size())
+        {
+            v[i]=k;
+            if(v[i]==target[j])
+            {
+                ans.push_back("Push");
+                k++;
+                i++;
+                j++;
+            }
+            else
+            {
+                ans.push_back("Push");
+                ans.push_back("Pop");
+                i++;
+                k++;
+            }
+        }
+        return ans;
+    }
+};
