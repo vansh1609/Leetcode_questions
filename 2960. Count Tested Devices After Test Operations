@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int countTestedDevices(vector<int>& batteryPercentages) {
+        int count=0,i=0;
+        int n=batteryPercentages.size();
+        while(i<n)
+        {
+            if(batteryPercentages[i]<=0)
+            i++;
+            else
+            {
+                count++;
+                int j=i+1;
+                for(;j<n;j++)
+                batteryPercentages[j]--;
+                i++;
+            }
+        }
+        return count;
+    }
+};
