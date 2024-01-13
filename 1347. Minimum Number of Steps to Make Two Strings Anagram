@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int minSteps(string s, string t) {
+        int h[26]={0},p[26]={0},count=0;
+        for(int i=0;i<s.size();i++)
+        {
+            h[s[i]-97]++;
+            p[t[i]-97]++;
+        }
+        for(int i=0;i<26;i++)
+        {
+            if(h[i]>p[i])
+                count+=h[i]-p[i];
+        }
+        return count;
+    }
+};
