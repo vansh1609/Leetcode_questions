@@ -1,0 +1,38 @@
+class Solution {
+public:
+    vector<vector<int>> findWinners(vector<vector<int>>& matches) {
+        map<int,int> m1,m2,m3;
+        for(int i=0;i<matches.size();i++)
+            m1[matches[i][0]]++;
+        for(int i=0;i<matches.size();i++)
+            m2[matches[i][1]]++;
+        vector<vector<int>> v;
+        map<int,int>::iterator ir1=m1.begin(),ir2=m2.begin();
+        vector<int> temp;
+        for(;ir1!=m1.end();ir1++)
+        {
+            
+            if(ir1->second!=0)
+            {
+                if(m2[ir1->first]==0)
+                    temp.push_back(ir1->first);
+            }
+            
+        }
+        v.push_back(temp);
+        vector<int> temp2;
+        for(;ir2!=m2.end();ir2++)
+        {
+            
+            if(ir2->second==1)
+            {
+                
+                    temp2.push_back(ir2->first);
+            }
+            
+        }
+        v.push_back(temp2);
+            return v;
+        
+    }
+};
