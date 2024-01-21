@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int solve(int i,int n,vector<int> &nums,vector<int> &v)
+    {
+        if(i>=n)
+            return 0;
+        if(i==n-1)
+            return nums[i];
+        if(v[i]!=-1)
+            return v[i];
+        int last=0,slast=0;
+        last=nums[i]+solve(i+2,n,nums,v);
+        slast=solve(i+1,n,nums,v);
+        return v[i]=max(last,slast);
+    }
+    int rob(vector<int>& nums) {
+        int n=nums.size();
+        vector<int> v(n,-1);
+        return solve(0,n,nums,v);
+    }
+};
