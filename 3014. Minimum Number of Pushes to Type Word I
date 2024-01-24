@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int minimumPushes(string word) {
+        int count=0;
+        int n=word.size(),k;
+        k=n%8;
+        while(n)
+        {
+            count+=n/8;
+            n/=8;
+        }
+        int sum=0;
+        for(int i=1;i<=count;i++)
+        sum+=i*8;
+        return sum+(k*(count+1));
+    }
+};
