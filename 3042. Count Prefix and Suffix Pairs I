@@ -1,0 +1,26 @@
+class Solution {
+public:
+    bool isPrefixAndSuffix(string str1,string str2)
+    {
+        bool p=false,s=false;
+        if(str2.find(str1)==0)
+        p=true;
+        reverse(str2.begin(),str2.end());
+        reverse(str1.begin(),str1.end());
+        if(str2.find(str1)==0)
+        s=true;
+        return p && s;
+    }
+    int countPrefixSuffixPairs(vector<string>& words) {
+        int count=0;
+        for(int i=0;i<words.size()-1;i++)
+        {
+            for(int j=i+1;j<words.size();j++)
+            {
+                if(isPrefixAndSuffix(words[i],words[j]))
+                count++;
+            }
+        }
+        return count;
+    }
+};
