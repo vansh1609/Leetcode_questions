@@ -1,0 +1,45 @@
+class Solution {
+public:
+    int findJudge(int n, vector<vector<int>>& trust) {
+        vector<int> v[n+1];
+        for(int i=0;i<trust.size();i++)
+        {
+            v[trust[i][0]].push_back(trust[i][1]);
+            // v[trust[i][1]].push_back(trust[i][0]);
+        }
+        int index=-1;
+        for(int i=1;i<=n;i++)
+        {
+            if(v[i].size()==0)
+                index=i;
+        }
+        // cout<<index;
+//         for(int i=1;i<=n;i++)
+//         {
+            
+//             for(int j=0;j<v[i].size();j++)
+//             {
+//                 cout<<v[i][j];
+//             }
+            
+//         }
+        // bool b=false;
+        for(int i=1;i<=n;i++)
+        {
+            bool b=false;
+            
+            for(int j=0;j<v[i].size();j++)
+            {
+                if(v[i][j]==index)
+                    b=true;
+            }
+            if(i==index)
+                b=true;
+            if(b==false)
+                return -1;
+        }
+        return index;
+        
+        
+    }
+};
