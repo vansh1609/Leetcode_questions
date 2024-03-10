@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+       int *p=new int[1001];
+        int *q=new int[1001];
+        vector<int> v;
+        for(int i=0;i<=1000;i++)
+            p[i]=0;
+         for(int i=0;i<=1000;i++)
+            q[i]=0;
+        for(int i=0;i<nums1.size();i++)
+            p[nums1[i]]++;
+        for(int i=0;i<nums2.size();i++)
+            q[nums2[i]]++;
+        for(int i=0;i<=1000;i++)
+        {
+            if(p[i]>0 && q[i]>0)
+                v.push_back(i);
+        }
+        return v;
+        
+    }
+};
