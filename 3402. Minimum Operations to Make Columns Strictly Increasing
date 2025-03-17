@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int minimumOperations(vector<vector<int>>& grid) {
+        int n=grid.size();
+        int m=grid[0].size(),sum=0;
+        for(int i=0;i<m;i++)
+        {
+            int x=grid[0][i];
+            for(int j=1;j<n;j++)
+            {
+                if(grid[j][i]>x)
+                x=grid[j][i];
+                else{
+                    sum+=x-grid[j][i]+1;
+                    x=x+1;
+                }
+            }
+        }
+        return sum;
+    }
+};
