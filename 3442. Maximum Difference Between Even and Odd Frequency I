@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int maxDifference(string s) {
+        int oddmax=0,evemin=INT_MAX;
+        vector<int> v(26,0);
+        for(int i=0;i<s.size();i++)
+        v[s[i]-'a']++;
+        for(int i=0;i<26;i++)
+        {
+            if(v[i]%2==0 && v[i]>0)
+            {
+                evemin=min(evemin,v[i]);
+            }
+            else if(v[i]>0){
+                oddmax=max(oddmax,v[i]);
+            }
+        }
+        return oddmax-evemin;
+    }
+};
