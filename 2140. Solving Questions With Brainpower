@@ -1,0 +1,21 @@
+class Solution {
+public:
+    long long answer(vector<vector<int>> &questions,int n,vector<long long> &dp)
+    {
+        if(n>=questions.size())
+        return 0;
+        if(n==questions.size()-1)
+        return questions[n][0];
+        if(dp[n]!=-1)
+        return dp[n];
+        long long take=0,notake=0;
+        notake=answer(questions,n+1,dp);
+        take=questions[n][0]+answer(questions,n+questions[n][1]+1,dp);
+        return dp[n]=max(take,notake);
+    }
+    long long mostPoints(vector<vector<int>>& questions) {
+        int n=questions.size();
+        vector<long long> dp(n,-1);
+        return answer(questions,0,dp);
+    }
+};
