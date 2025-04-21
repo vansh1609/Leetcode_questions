@@ -1,0 +1,34 @@
+class Solution {
+public:
+    string binary(string s)
+    {
+        int n=stoi(s);
+        string str="";
+        while(n)
+        {
+            str+=to_string(n%2);
+            n/=2;
+        }
+        reverse(str.begin(),str.end());
+        return str;
+    }
+    string convertDateToBinary(string date) {
+        string year="",month="",day="";
+        year+=date[0];
+        year+=date[1];
+        year+=date[2];
+        year+=date[3];
+        month+=date[5];
+        month+=date[6];
+        day+=date[8];
+        day+=date[9];
+        
+        string ans="";
+        ans+=binary(year);
+        ans+='-';
+        ans+=binary(month);
+        ans+='-';
+        ans+=binary(day);
+        return ans;
+    }
+};
