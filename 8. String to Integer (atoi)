@@ -1,0 +1,52 @@
+class Solution {
+public:
+    double convert(string s)
+    {
+        int b=1,n=s.size(),i=0;
+        if(s[0]=='-')
+        {
+            b=-1;
+            i++;
+        }
+        double ans=0;
+        while(i<n)
+        {
+            ans+=(s[i]-'0')*pow(10,s.size()-i-1);
+            i++;
+        }
+        return b*ans;
+    }
+    int myAtoi(string s) {
+        string str="";
+        int i=0;
+        while(i<s.size() && s[i]==' ')
+        i++;
+        if(i<s.size() && s[i]=='-')
+        {
+            str+=s[i];
+            i++;
+        }
+        else if(i<s.size() && s[i]=='+')
+        i++;
+        else{
+            while(i<s.size() && s[i]=='0')
+            i++;
+        }
+        while(i<s.size())
+        {
+            if(s[i]>='0' && s[i]<='9')
+            {
+                str+=s[i];
+                i++;
+            }
+            else
+            break;
+        }
+        double ans=convert(str);
+        if(ans<pow(-2,31))
+        return pow(-2,31);
+        else if(ans>pow(2,31)-1)
+        return pow(2,31)-1;
+        else return (int)ans;
+    }
+};
