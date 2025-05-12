@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int numberOfSpecialChars(string word) {
+        int v[123]={0};
+        int count=0;
+        for(int i=0;i<word.size();i++)
+        {
+            v[word[i]]++;
+        }
+        for(int i=65;i<=90;i++)
+        {
+            if(v[i]>0 && v[i+32]>0)
+            count++;
+            
+        }
+        return count;
+    }
+};
